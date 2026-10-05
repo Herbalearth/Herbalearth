@@ -1,0 +1,6 @@
+{
+  "name": "Herbal Earth - Phyto-Chemical Extraction Division",
+  "description": "Enterprise botanical and nutraceutical ingredient platform with analytical HPLC batch verification, Himalayan terroir mapping, and certified standardized extracts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

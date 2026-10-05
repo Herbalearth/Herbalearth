@@ -1,0 +1,1113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #f5fcea;
+  --color-surface-dim: #d6dccb;
+  --color-surface-bright: #f5fcea;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f0f6e4;
+  --color-surface-container: #eaf0df;
+  --color-surface-container-high: #e4ebd9;
+  --color-surface-container-highest: #dee5d3;
+  --color-surface-variant: #dee5d3;
+
+  --color-on-surface: #171d13;
+  --color-on-surface-variant: #434938;
+
+  --color-inverse-surface: #2c3227;
+  --color-inverse-on-surface: #edf3e1;
+
+  --color-outline: #737a67;
+  --color-outline-variant: #c3c9b3;
+
+  --color-primary: #1B4D1C;
+  --color-primary-container: #266B28;
+  --color-on-primary: #ffffff;
+
+  --color-on-primary-container: #082109;
+
+  --color-primary-fixed: #A9F5AC;
+  --color-primary-fixed-dim: #88DB8C;
+  --color-on-primary-fixed: #032104;
+  --color-on-primary-fixed-variant: #114213;
+
+  --color-secondary: #4e662f;
+  --color-secondary-container: #cae7a2;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #506831;
+
+  --color-secondary-fixed: #cfeca7;
+  --color-secondary-fixed-dim: #b4d08d;
+  --color-on-secondary-fixed: #102000;
+  --color-on-secondary-fixed-variant: #374d19;
+
+  --color-tertiary: #8a5025;
+  --color-tertiary-container: #d08a5a;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #532600;
+
+  --color-tertiary-fixed: #ffdcc7;
+  --color-tertiary-fixed-dim: #ffb786;
+  --color-on-tertiary-fixed: #311300;
+  --color-on-tertiary-fixed-variant: #6d390f;
+
+  --color-background: #f5fcea;
+  --color-on-background: #171d13;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --font-serif: "Newsreader", serif;
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "Space Grotesk", monospace;
+
+  --font-headline-lg: "Newsreader", serif;
+  --font-headline-md: "Newsreader", serif;
+  --font-headline-sm: "Newsreader", serif;
+
+  --font-subheading-lg: "Space Grotesk", sans-serif;
+  --font-body-lg: "Space Grotesk", sans-serif;
+  --font-body-md: "Space Grotesk", sans-serif;
+  --font-body-sm: "Space Grotesk", sans-serif;
+
+  --font-label-data-lg: "Space Grotesk", sans-serif;
+  --font-label-data-sm: "Space Grotesk", sans-serif;
+
+  --font-code-spec: "Space Grotesk", monospace;
+
+  --spacing-space-2xs: 0.125rem;
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2.5rem;
+  --spacing-space-2xl: 4rem;
+
+  --spacing-gutter-mobile: 1rem;
+  --spacing-gutter: 1.5rem;
+}
+
+
+/* =========================================================
+   RESET / BASE
+   ========================================================= */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+
+    scroll-behavior: smooth;
+  }
+
+  body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    overflow-x: hidden;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /*
+   * Prevent media from overflowing their containers.
+   */
+  img,
+  picture,
+  video,
+  canvas,
+  svg,
+  iframe {
+    display: block;
+    max-width: 100%;
+  }
+
+  img,
+  video {
+    height: auto;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  /*
+   * Prevent form controls from overflowing.
+   */
+  button,
+  input,
+  textarea,
+  select {
+    max-width: 100%;
+    min-width: 0;
+    font: inherit;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  /*
+   * Text wrapping.
+   */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  span,
+  label {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /*
+   * Prevent flex/grid children from creating
+   * unexpected horizontal overflow.
+   */
+  .flex > *,
+  .inline-flex > *,
+  .grid > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /*
+   * Default links.
+   */
+  a {
+    max-width: 100%;
+  }
+
+
+  /* =========================================================
+     TYPOGRAPHY
+     ========================================================= */
+
+  .font-headline {
+    font-family: "Newsreader", serif;
+  }
+
+  .font-headline-sm {
+    font-family: "Newsreader", serif;
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+
+  .font-headline-md {
+    font-family: "Newsreader", serif;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 500;
+  }
+
+  .font-headline-lg-mobile {
+    font-family: "Newsreader", serif;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+
+  .font-headline-lg {
+    font-family: "Newsreader", serif;
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+
+  .font-code-spec {
+    font-family: "Space Grotesk", monospace;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+
+  .font-label-data-sm {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .font-label-data-lg {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+
+  .font-subheading-lg {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+
+  .font-body-md {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+  .font-body-sm {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 600;
+  }
+
+  p {
+    font-weight: 600;
+  }
+
+
+  /* =========================================================
+     SAFE AREAS
+     ========================================================= */
+
+  .pb-safe {
+    padding-bottom: max(
+      env(safe-area-inset-bottom, 0px),
+      16px
+    );
+  }
+
+  .pt-safe {
+    padding-top: max(
+      env(safe-area-inset-top, 0px),
+      0px
+    );
+  }
+}
+
+
+/* =========================================================
+   MATERIAL SYMBOLS
+   ========================================================= */
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+
+  vertical-align: middle;
+  line-height: 1;
+
+  max-width: 100%;
+}
+
+.material-symbols-outlined.fill-1 {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE CONTAINER
+   ========================================================= */
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-left: var(--spacing-gutter);
+  padding-right: var(--spacing-gutter);
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVE LAYOUT HELPERS
+   ========================================================= */
+
+/*
+ * Any element using this class will never exceed
+ * the viewport width.
+ */
+.responsive-width {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/*
+ * Responsive flex row.
+ */
+.responsive-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/*
+ * Responsive grid.
+ */
+.responsive-grid {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/*
+ * Card / panel helpers.
+ */
+.card,
+.panel,
+.section {
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/*
+ * Prevent content from creating overflow.
+ */
+.content-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navigation,
+.bottom-nav {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.table-wrapper {
+  width: 100%;
+  max-width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+
+/* =========================================================
+   CODE / PRE
+   ========================================================= */
+
+pre,
+code {
+  max-width: 100%;
+}
+
+pre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+.form-control {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-space-md);
+  width: 100%;
+  max-width: 100%;
+}
+
+.form-row > * {
+  min-width: 0;
+  flex: 1 1 200px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.mobile-full-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+   ========================================================= */
+
+.bottom-nav {
+  padding-bottom: max(
+    env(safe-area-inset-bottom, 0px),
+    12px
+  );
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    overflow-x: hidden;
+  }
+
+
+  /* ---------------------------------------------------------
+     CONTAINER
+     --------------------------------------------------------- */
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+
+    margin-left: 0;
+    margin-right: 0;
+
+    padding-left: var(--spacing-gutter-mobile);
+    padding-right: var(--spacing-gutter-mobile);
+  }
+
+
+  /* ---------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------- */
+
+  h1 {
+    font-size: clamp(28px, 8vw, 42px);
+    line-height: 1.08;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6vw, 32px);
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-size: clamp(20px, 5vw, 28px);
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: clamp(18px, 4.5vw, 24px);
+    line-height: 1.25;
+  }
+
+  .font-headline-lg {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.15;
+  }
+
+  .font-headline-md {
+    font-size: clamp(24px, 6vw, 28px);
+    line-height: 1.2;
+  }
+
+  .font-headline-sm {
+    font-size: clamp(20px, 5vw, 22px);
+    line-height: 1.3;
+  }
+
+  .font-subheading-lg {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .font-body-md {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .font-body-sm {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+
+  /* ---------------------------------------------------------
+     FLEX
+     --------------------------------------------------------- */
+
+  .responsive-row,
+  .row,
+  .flex-row {
+    flex-wrap: wrap;
+  }
+
+  /*
+   * Important:
+   * Do NOT force every Tailwind flex element to wrap.
+   * Only the responsive helpers above wrap automatically.
+   */
+
+
+  /* ---------------------------------------------------------
+     NAVIGATION
+     --------------------------------------------------------- */
+
+  .navigation {
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    gap: 12px;
+  }
+
+  .navigation > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+
+  /* ---------------------------------------------------------
+     CARDS / PANELS / SECTIONS
+     --------------------------------------------------------- */
+
+  .card,
+  .panel,
+  .section {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+
+  /* ---------------------------------------------------------
+     RESPONSIVE GRID
+     --------------------------------------------------------- */
+
+  .responsive-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-space-md);
+  }
+
+
+  /*
+   * Common Tailwind grid classes.
+   */
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-cols-3,
+  .grid-cols-4,
+  .grid-cols-5,
+  .grid-cols-6 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+
+  /* ---------------------------------------------------------
+     IMAGES
+     --------------------------------------------------------- */
+
+  img,
+  video,
+  iframe,
+  svg,
+  canvas {
+    max-width: 100%;
+  }
+
+  .responsive-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+
+  /* ---------------------------------------------------------
+     FORMS
+     --------------------------------------------------------- */
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-row > * {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+
+  /* ---------------------------------------------------------
+     BUTTONS
+     --------------------------------------------------------- */
+
+  .mobile-full-width {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     TABLES
+     --------------------------------------------------------- */
+
+  .table-wrapper {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-wrapper table {
+    width: max-content;
+    min-width: 600px;
+  }
+
+
+  /* ---------------------------------------------------------
+     LONG TEXT / CODE
+     --------------------------------------------------------- */
+
+  pre {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  code {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+
+  /* ---------------------------------------------------------
+     BOTTOM NAVIGATION
+     --------------------------------------------------------- */
+
+  .bottom-nav {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    padding-bottom: max(
+      env(safe-area-inset-bottom, 0px),
+      12px
+    );
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+
+  /* ---------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------- */
+
+  h1 {
+    font-size: clamp(26px, 9vw, 36px);
+  }
+
+  h2 {
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  h3 {
+    font-size: clamp(19px, 6vw, 26px);
+  }
+
+  .font-headline-lg {
+    font-size: clamp(26px, 9vw, 36px);
+    line-height: 1.12;
+  }
+
+  .font-headline-md {
+    font-size: clamp(22px, 7vw, 28px);
+    line-height: 1.2;
+  }
+
+  .font-headline-sm {
+    font-size: clamp(19px, 6vw, 22px);
+    line-height: 1.3;
+  }
+
+  .font-body-md {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .font-body-sm {
+    font-size: 11px;
+    line-height: 17px;
+  }
+
+  .font-label-data-lg {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .font-label-data-sm {
+    font-size: 10px;
+    line-height: 13px;
+  }
+
+
+  /* ---------------------------------------------------------
+     NAVIGATION
+     --------------------------------------------------------- */
+
+  .navigation {
+    gap: 8px;
+  }
+
+
+  /* ---------------------------------------------------------
+     GRID
+     --------------------------------------------------------- */
+
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4,
+  .grid-cols-5,
+  .grid-cols-6 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+
+  /* ---------------------------------------------------------
+     SPACING
+     --------------------------------------------------------- */
+
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+
+  .mobile-gap-sm {
+    gap: 8px !important;
+  }
+
+  .mobile-gap-md {
+    gap: 12px !important;
+  }
+
+  .mobile-gap-lg {
+    gap: 16px !important;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .font-headline-lg {
+    font-size: 26px;
+  }
+
+  .font-headline-md {
+    font-size: 22px;
+  }
+
+  .font-headline-sm {
+    font-size: 19px;
+  }
+
+  .font-body-md {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .font-body-sm {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .navigation {
+    gap: 6px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .font-headline-lg {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .responsive-grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 1025px) {
+
+  .responsive-grid {
+    grid-template-columns: repeat(
+      3,
+      minmax(0, 1fr)
+    );
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .responsive-grid {
+    grid-template-columns: repeat(
+      4,
+      minmax(0, 1fr)
+    );
+  }
+}
+
+
+/* =========================================================
+   MOBILE UTILITY CLASSES
+   ========================================================= */
+
+/*
+ * Stack an element vertically on mobile.
+ */
+@media (max-width: 768px) {
+
+  .mobile-flex-col {
+    flex-direction: column !important;
+  }
+
+  .mobile-flex-wrap {
+    flex-wrap: wrap !important;
+  }
+
+  .mobile-w-full {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .mobile-max-w-full {
+    max-width: 100% !important;
+  }
+
+  .mobile-text-center {
+    text-align: center !important;
+  }
+
+  .mobile-text-left {
+    text-align: left !important;
+  }
+
+  .mobile-hidden {
+    display: none !important;
+  }
+
+  .mobile-block {
+    display: block !important;
+  }
+
+  .mobile-overflow-hidden {
+    overflow: hidden !important;
+  }
+
+  .mobile-overflow-x-auto {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
